@@ -1,0 +1,87 @@
+<?
+session_start();
+?>
+<!DOCTYPE html>
+
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>대학생을 위한 템플릿 제작소</title>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	
+    <link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
+	<link href="./css/archive.css" rel="stylesheet" type="text/css" media="all">
+	<style> 
+		.row { margin-top:100px;}
+
+        header {margin:0px; text-align: center; padding: 5px;}
+        h1#s{ font-weight: bold; font-size: 44px; text-shadow: rgb(250, 100, 139) 1px 2px 4px; color: rgb(0,0,0);font-family: Impact;}  /* 신규회원가입*/
+        div#a{ background-color: rgba(250,149,139,0.34902); position: relative; top: -70px; left: 200px; width: 70%; height:250px;text-align:center;}
+        h1#g{font-weight: bold; font-size: 50px; color: rgb(255, 255, 255); text-shadow: rgb(127, 127, 127) 3px 3px 5px;font-family: Impact;} /*EVENT*/
+        h2{ background-color:rgb(255, 255, 255); margin:-15px; padding:-10px;}
+        a#o{position:relative; top:-31px; left:-120px;}
+
+        div#b{ background-color: rgba(250,149,139,0.34902); position: relative; top: -10px; left: 200px; width: 70%; height:274px; background-image: url('img/a.png');
+            background-position: right bottom; background-repeat:no-repeat;}
+        p#t{ image-align:left-center; margin:0;}
+
+
+        div#c{ background-color: rgba(250,149,139,0.34902); position: relative; top: 10px; left: 200px; width: 70%; height:200px;}
+
+
+        footer{ background-color: rgb(190,190,190); position: relative; top: 40px; left: 200px; width: 70%; height:70px;  }
+        span{ color: rgb(250,100,139);}
+        p#n{font-weight: bold; font-size: 48px; font-style: italic; font-family: Impact; margin:0px; padding:0px; align:center; image-align:right-center}
+
+    </style>
+</head>
+
+<body>
+    <? include "./header.php"; ?>
+
+    <div class="container">
+        <div class="row">
+            <header>
+                <div style="margin-top: auto; margin-bottom: 50px">
+                <h1 id="s">신규 회원가입</h1>
+                    </div>
+            </header>
+
+            <div id="a">
+                <h1 id="g">EVENT</h1>
+                <h2><p>신규 회원가입하시고 포인트100% 당첨의 기회를 잡으세요!</p></h2>
+                <h2>회원가입하면 2000 POINT 지급</h2>
+                <br><br/>
+                <a id="o" href="join.html" target="_blank"><img src="img/f.png" width="1094" height="200"></a>
+
+            </div>
+
+
+            <div id="b" style="height: 400px">
+
+                <p id="t"><img src="img/h.png" width="600" height="300"></p>
+
+            </div>
+
+            <div id="c">
+                <img src="img/k.png">
+            </div>
+
+            <footer>
+                <p id="n">SURPRISE EVENT<span> Comming soon!</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="https://www.facebook.com/MIKespecialPPT/"><img src="img/facebook.png"width="61" height="60"></a><a href="https://www.instagram.com/mik_especial/" target="_blank"><img src="img/instagram.png"width="63" height="60"></a></p>
+
+                <div class="footer-text">
+                    <b>MIK especial</b>
+                    <br> 학성대학교 CRM 프로젝트<p>
+                </p>
+                    <b> © Make It Especial Corp. Since 2016 </b>
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+<script src="./js/bootstrap.min.js"></script>
+<script src="./js/archive.js"></script>
+
+</html>

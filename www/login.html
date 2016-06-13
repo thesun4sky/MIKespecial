@@ -1,0 +1,70 @@
+<?
+session_start();
+?>
+<!DOCTYPE html>
+ <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<head>
+
+    <meta charset="utf-8" />
+    <title>대학생을 위한 템플릿 제작소</title>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	
+    <style>
+		body {
+			background-color:#E8E8E8;
+		}
+	</style>
+    
+    <link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
+	<link href="./css/archive.css" rel="stylesheet" type="text/css" media="all">
+
+    <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.1.js"></script>
+</head>
+
+<body>
+    <? include "./header.php"; ?>
+    
+    <div class="container">
+    	<div class="row">
+            <div class="login-grid col-xs-12 col-sm-12">
+
+        <form name="login_form" method="post" action="/member/login.php">
+    	<div id="login">
+        	<div class="login-logo">
+            </div>
+        	<div class="login-form">
+            	<div><input type="text" id="id" name="id" class="login-id" maxLength="200" placeholder='이메일'></div>
+                <div><input type="password"  id="pw" name="pw"class="login-pw" maxLength="200" placeholder='비밀번호'></div>
+				<div><input type="submit"  class="login-bu" value="로그인"></div>
+                 <a href="./join.html">회원 가입</a> <a>|</a> <a  href="#">계정 찾기</a>
+            </div>
+            <!--<div id="naver_id_login"></div>-->
+            <!--<script type="text/javascript">-->
+                <!--var naver_id_login = new naver_id_login("_c98E77mjlWKMs4jO1eR", "http://ib18.co.kr/");-->
+                <!--naver_id_login.setButton("white", 3,40);-->
+                <!--naver_id_login.setDomain(".service.com");-->
+                <!--naver_id_login.setState("abcdefghijkmnopqrst");-->
+                <!--naver_id_login.setPopup();-->
+                <!--naver_id_login.init_naver_id_login();-->
+            <!--</script>-->
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+    <footer>
+        <div class="footer-text">
+            <b>MIK especial</b>
+            <br> 학성대학교 CRM 프로젝트<p>
+        </p>
+            <b> © Make It Especial Corp. Since 2016 </b>
+        </div>
+    </footer>
+    
+   </body>
+
+<script src="./js/bootstrap.min.js"></script>
+<script src="./js/archive.js"></script>
+
+</html>

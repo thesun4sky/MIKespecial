@@ -1,0 +1,121 @@
+﻿<?
+session_start();
+include "./lib/dbconn.php";
+?>
+<!DOCTYPE html>
+
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+    <meta charset="utf-8" />
+    <title>Identified Best 18</title>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+
+    <link href="/css/archive.css" rel="stylesheet" type="text/css" media="all">
+
+    </head>
+<body>
+
+<? include "header.php"; ?> <br/> <br/><br/><br/> <br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<!--<?
+    if(!empty($_SESSION['userid']))
+     {
+          $userid = $_SESSION['userid'];
+    ?>
+    <script>
+    window.alert('잘못된 접근입니다.')
+        history.go(-1)
+            </script>
+    <?
+    }
+    ?>-->
+
+    <table>
+        <caption>장바구니</caption>
+        <thead>
+        <tr>
+            <th scope="col" class="num">상품이름</th>
+            <th scope="col" class="pic">주문자</th>
+            <th scope="col" class="gd_name">이메일</th>
+            <th scope="col" class="amount">우편번호</th>
+            <th scope="col" class="price">주소</th>
+            <th scope="col" class="price">상세 주소</th>
+            <th scope="col" class="price">수량</th>
+            <th scope="col" class="price">가격</th>
+            <th scope="col" class="delete">삭제</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?
+        $goods_num= $_GET['goods_num'];
+        $amount= $_GET['amount'];
+        $price= $_GET['price'];
+        $userid = $_SESSION['userid'];
+        //사용자 정보 받아오기
+
+/*
+        $sql="SELECT";
+        $sql.="goods.name,";
+        $sql.="   member.nik,";
+        $sql.="   member.postcode,";
+        $sql.="   member.address,";
+        $sql.="   member.address2";
+        $sql.="  FROM";
+        $sql.="   goods";
+        $sql.="  LEFT OUTER JOIN";
+        $sql.="   member";
+        $sql.="  ON member.email = '$userid'";
+        $sql.="  WHERE";
+        $sql.="   goods.gd_num = '$goods_num'";
+        $row = mysqli_query( $connect, $sql);*/
+
+        $sql="SELECT name FROM goods WHERE goods.gd_num = '$goods_num'";
+        $result = mysqli_query( $connect, $sql);
+        $row = mysqli_fetch_assoc($result)
+        ?>
+
+        <tr>
+            <td class="no"><? echo $row['name'] ?></td>
+
+            <?
+        $sql="SELECT * FROM member WHERE email = '$userid'";
+        $result = mysqli_query( $connect, $sql);
+        $row = mysqli_fetch_assoc($result);
+
+            ?>
+            <td class="pic"><? echo $row['nik'] ?></td>
+            <td class="date"><? echo $userid?></td>
+            <td class="title"><? echo $row['postcode']?></td>
+            <td class="author"><? echo $row['address']?></td>
+        <td class="author"><? echo $row['address2']?></td>
+            <td class="author"><? echo $amount?></td>
+            <td class="author"><? echo $price?></td>
+            <td class="hit"><? echo '삭제'?></td>
+        </tr>
+        </tbody>
+    </table>
+ <!--
+ echo ("<table bordercolor=pink border=3 cellpadding=1 cellspacing=0>
+<tr>
+    <td><b>제품번호</td><td><b>사진</td><td><b>제품명</td><td><b>금액</td><td><b>수량</td><td><b>합계</td><td><b>취소</td></tr>
+<tr>
+    <td><b>$rs[itemno]</td><td><img src='./img/$rs[pic]' width=50 height=50 border=0></td><td><b>$rs[itemname]</td><td><b>$price</td><td><b>$rs[amount]</td><td><b>합계</td><td><b>취소</td></tr>
+
+");
+echo ("</table></td>");
+
+echo "</tr><tr>";
+
+    echo "</table>";
+    for ($i=$line; $i<=3; $i++)
+    echo ("<table border=0 cellpadding=0 cellspacing=0><tr>
+        <td height=150></td></tr></table>");
+    echo "<br>";
+    echo "<table><tr><td>";
+
+        echo "</td></tr></table>";
+    ?>
+-->
+</body>
+</html>

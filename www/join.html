@@ -1,0 +1,187 @@
+<?
+session_start();
+?>
+<!DOCTYPE html>
+ <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<head>
+
+    <meta charset="utf-8" />
+    <title>대학생을 위한 템플릿 제작소</title>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	
+
+
+    <link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
+	<link href="./css/archive.css" rel="stylesheet" type="text/css" media="all">
+    <script type="text/javascript" src="join.js"></script>   <!--Ajax를 통한 비동기 처리-->
+   <style>
+		body {
+			background-color:#E8E8E8;
+		}
+
+		
+       .join-postcode {
+		   margin:0;
+           font-size:16px;
+           margin-bottom:20px;
+           width:200px;
+           line-height:16px;
+           height:60px;
+           padding-left:20px;
+           border: 1px solid #C1C1C1;
+       }
+        .join-post-bu {
+            cursor:pointer;
+            color:white;
+            font-weight:bold;
+            font-size:12px;
+            width:100px;
+            line-height:55px;
+            height:60px;
+			margin-bottom:4px;
+			border-top:2px;
+			border-bottom:0px;
+            border-style:solid;
+            border-color:#292929;
+            background-color:#292929;
+            -webkit-transition-duration: 0.4s;
+            transition-duration: 0.4s;
+       }
+	</style>
+    <script>
+
+        function check_input()
+        {
+            if (!document.join_form.id.value)
+            {
+                alert(" ");
+                document.join_form.id.focus();
+                return;
+            }
+
+            if (id.indexOf('.')<0 || id.indexOf(' ')>-1 || id.indexOf('@')>0)
+            {
+                alert("정확한 이메일주소를 입력해주세요.");
+                document.join_form.id.focus();
+                return;
+            }
+
+            if (!document.join_form.pw.value)
+            {
+                alert("비밀번호를 입력하세요");
+                document.join_form.pw.focus();
+                return;
+            }
+
+            if (document.join_form.pw.value.length < 6)
+            {
+                alert("비밀번호를 6자이상 입력하세요");
+                document.join_form.pw.focus();
+                return;
+            }
+            if (!document.join_form.guide_checkbox.checked)
+            {
+                alert("약관에 동의해주세요");
+                document.join_form.pw_confirm.focus();
+                return;
+            }
+
+
+            if (!document.join_form.name.value)
+            {
+                alert("이름을 입력하세요");
+                document.join_form.name.focus();
+                return;
+            }
+
+                     if (!document.join_form.ph.value)
+            {
+                alert("전화번호를 입력하세요");
+                document.join_form.ph.focus();
+                return;
+            }
+
+
+
+            if (document.join_form.pw.value !=
+                    document.join_form.pw_confirm.value)
+            {
+                alert("비밀번호가 일치하지 않습니다.\n다시 입력해주세요.");
+                document.join_form.pw.focus();
+                document.join_form.pw.select();
+                return;
+            }
+
+            document.join_form.submit();
+        }
+
+    </script>
+</head>
+
+<body onload="process()">
+    <? include "./header.php"; ?>
+    
+    <div class="container">
+    	<div class="row">
+            <div class="login-grid col-xs-12 col-sm-12">
+            
+        <form name="join_form" method="post" action="member/insert.php">
+    <div id="join">
+        	<div class="join-logo">
+            	
+            </div>
+       	  <div class="join-form">
+            
+            	<div><input type="email" name="id" id="id" class="join-id" maxLength="200" placeholder='이메일' required></div><div id="underInput"></div>
+                <div><input type="password"  name="pw" id="pw" class="join-pw" maxLength="200" placeholder='비밀번호'  required></div>
+                <div><input type="password" name="pw_confirm"  id="pw_confirm" class="join-pw-check" maxLength="200" placeholder='비밀번호 확인' required></div><div id="underpassInput"></div>
+                <div><input type="text" name="name" class="join-nik" maxLength="200" placeholder='이름' required></div>
+              <div><input type="text" name="ph" class="join-nik" maxLength="200" placeholder='전화번호' required></div>
+              <div><select name="gender" class="join-select" >
+                  <option value="0">성별(선택하세요)</option>
+                  <option value="1">남자</option>
+                  <option valude="2">여자</option>
+              </select></div>
+              <div><input type="text" name="univ" class="join-nik" maxLength="200" placeholder='학교'></div>
+              <div><select name="grade" class="join-select" >
+                  <option value="0">학년(선택하세요)</option>
+                  <option value="1">1학년</option>
+                  <option value="2">2학년</option>
+                  <option valude="3">3학년</option>
+                  <option valude="4">4학년</option>
+                  <option valude="5">기타</option>
+              </select></div>
+              <div><select name="major" class="join-select" >
+                  <option value="0">전공(선택하세요)</option>
+                  <option value="인대">인대</option>
+                  <option value="사대">사대</option>
+                  <option valude="공대">공대</option>
+                  <option valude="예대">예대</option>
+                  <option valude="기타">기타</option>
+              </select></div>
+              <div><input type="text" id="recommander" name="recommander" class="join-nik" maxLength="200" placeholder='추천인(없다면 "없음" 이라고 입력)' ></div><div id="underInput2"></div>
+
+                <div class="join-guide"> <input type="checkbox" name="guide_checkbox" id="guide-checkbox" > <label for="guide-checkbox" class="glyphicon glyphicon-ok"></label>  아이비에이틴의 <a>이용약관</a> 및 <a>개인정보취급방침</a>에 동의합니다. </div>
+				<button class="join-bu" type="submit">가입하기</button>
+            </div>
+        </div>
+        </form>
+        </div>
+    </div>
+    </div>
+
+    <footer>
+        <div class="footer-text">
+            <b>MIK especial</b>
+            <br> 학성대학교 CRM 프로젝트<p>
+        </p>
+            <b> © Make It Especial Corp. Since 2016 </b>
+        </div>
+    </footer>
+    
+   </body>
+
+<script src="./js/bootstrap.min.js"></script>
+<script src="./js/archive.js"></script>
+
+</html>
